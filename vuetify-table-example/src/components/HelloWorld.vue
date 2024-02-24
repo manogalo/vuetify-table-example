@@ -12,7 +12,7 @@
           <v-toolbar-title>Star Wars Characters</v-toolbar-title>
           <v-divider class="mx-4" inset vertical />
           <v-spacer />
-            <v-btn color="success" v-bind="props" @click="testeBotaoDownload">
+            <v-btn color="success" v-bind="props" @click="getWeatherForecast">
               <v-icon icon="mdi-file-excel-outline" color="success"></v-icon>
               Download
             </v-btn>
@@ -51,6 +51,10 @@
     methods: {
       testeBotaoDownload() {
         alert('Opa')
+      },
+      getWeatherForecast() {
+        axios.get('https://localhost:7041/WeatherForecast/')
+          .then(response => console.log(response.data))
       }
     }
   }
