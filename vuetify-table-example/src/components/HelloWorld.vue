@@ -49,12 +49,16 @@
         }) 
     },
     methods: {
-      testeBotaoDownload() {
-        alert('Opa')
-      },
       getWeatherForecast() {
-        axios.get('https://localhost:7041/WeatherForecast/')
-          .then(response => console.log(response.data))
+        let excelProperties = {
+          headers: this.headers,
+          chars: this.chars
+        }
+
+        let data = excelProperties
+        
+        axios.post('https://localhost:7041/ExcelGenerator/Generate/', data)
+          .then(response => window.location.href = response.data)
       }
     }
   }
